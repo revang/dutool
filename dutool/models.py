@@ -9,10 +9,23 @@ import re
 from ffmpy import FFmpeg
 
 
-class Message():
+class FileUtil:
     @staticmethod
-    def test():
-        print('Hello World')
+    def get_file_curlist(path):
+        file_list = []
+        for i in os.listdir(path):
+            file_path = os.path.join(path, i)
+            if os.path.isfile(file_path):
+                file_list.append(file_path)
+        return file_list
+
+    @staticmethod
+    def get_file_alllist(path):
+        file_list = []
+        for dirpath, dirnames, filenames in os.walk(path):
+            for filename in filenames:
+                file_list.append((os.path.join(dirpath, filename)))
+        return file_list
 
 
 class DateUtil:
