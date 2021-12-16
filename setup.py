@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='dutool',
-    version='0.0.1',
+    version='0.0.2',
     keywords='dutool',
     description='a library for revang developer',
     license='MIT License',
@@ -16,8 +16,7 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=[
-        'requests>=2.19.1',
-        # 'pycrypto>=2.6.1',
-        # 'xmltodict>=0.11.0'
+        'you-get>=0.4.1555',
+        'ffmpy>=0.3.0',
     ],
 )
