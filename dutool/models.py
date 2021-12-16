@@ -11,21 +11,26 @@ from ffmpy import FFmpeg
 
 class FileUtil:
     @staticmethod
-    def get_file_curlist(path):
+    def get_file_list(path, type="all"):
+        """
+        获取文件列表
+        """
         file_list = []
-        for i in os.listdir(path):
-            file_path = os.path.join(path, i)
-            if os.path.isfile(file_path):
-                file_list.append(file_path)
-        return file_list
 
-    @staticmethod
-    def get_file_alllist(path):
-        file_list = []
-        for dirpath, dirnames, filenames in os.walk(path):
-            for filename in filenames:
-                file_list.append((os.path.join(dirpath, filename)))
-        return file_list
+        if type == "all":
+            for dirpath, dirnames, filenames in os.walk(path):
+                for filename in filenames:
+                    file_list.append((os.path.join(dirpath, filename)))
+            return file_list
+
+        if type == "current":
+            for filename in os.listdir(path):
+                file_path = os.path.join(path, filename)
+                if os.path.isfile(file_path):
+                    file_list.append(file_path)
+            return file_list
+
+        raise TypeError("invalid type: {%s}" % type)
 
 
 class DateUtil:
